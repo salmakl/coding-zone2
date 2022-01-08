@@ -1,4 +1,4 @@
-package com.codingzone.dao;
+package com.youcode.codingzone2.dao;
 
 public class DaoFactory {
 }

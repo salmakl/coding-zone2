@@ -1,4 +1,4 @@
-package com.codingzone.config;
+package com.youcode.codingzone2.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
