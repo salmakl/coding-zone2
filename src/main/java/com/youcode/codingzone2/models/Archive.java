@@ -1,4 +1,4 @@
-package com.codingzone.models;
+package com.youcode.codingzone2.models;
 
 import java.sql.Timestamp;
 
