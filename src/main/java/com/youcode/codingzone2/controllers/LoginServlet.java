@@ -1,5 +1,8 @@
 package com.youcode.codingzone2.controllers;
 
+import com.youcode.codingzone2.daoImpl.StaffsImpl;
+import com.youcode.codingzone2.models.Users;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -23,10 +26,23 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + username + "</h1>");
-        out.println("<h1>" + "Heyy" + "</h1>");
-        out.println("</body></html>");
+        StaffsImpl staffsImpl = new StaffsImpl();
+
+        try {
+            Users user = staffsImpl.login(username,password);
+            System.out.println(user);
+            System.out.println("Ana hna");
+            if(user != null){
+                System.out.println("Ana hna2");
+                HttpSession session = request.getSession();
+                session.setAttribute("user",user);
+                out.println("<h1>Well Done</h1>");
+            }else {
+                out.println("<h1>Wrong username or password</h1>");
+            }
+        } catch (Exception e){
+            out.println("<h1>Error</h1>");
+        }
 
     }
 
