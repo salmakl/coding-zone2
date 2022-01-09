@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("user",user);
                 out.println("<h1>Well Done</h1>");
+     
         }else {
                 out.println("<h1>Wrong username or password</h1>");
             }
