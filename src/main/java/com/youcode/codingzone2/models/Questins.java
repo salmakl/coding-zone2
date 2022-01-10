@@ -5,13 +5,13 @@ import java.sql.Timestamp;
 public class Questins {
     private int id;
     private String question;
-    private Timestamp limitTime;
+    private int limitTime;
     private int id_answer;
     private int id_category;
 
     public Questins(){}
 
-    public Questins(int id, String question, Timestamp limitTime, int id_answer, int id_category){
+    public Questins(int id, String question, int limitTime, int id_answer, int id_category){
         this.id = id;
         this.question = question;
         this.limitTime = limitTime;
@@ -35,11 +35,11 @@ public class Questins {
         this.question = question;
     }
 
-    public Timestamp getLimitTime() {
+    public int getLimitTime() {
         return limitTime;
     }
 
-    public void setLimitTime(Timestamp limitTime) {
+    public void setLimitTime(int limitTime) {
         this.limitTime = limitTime;
     }
 
