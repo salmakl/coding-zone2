@@ -51,15 +51,18 @@ public class QuestionImpl extends DAO<Questins> {
     }
 
     public ArrayList<Questins> getAll(){
-        ArrayList<Questins> questions= new ArrayList<Questins>();
-        PreparedStatement Ps = null;
-        ResultSet Rs = null;
+        ArrayList<Questins> questions= new ArrayList<>();
+
         try{
-            String Query="SELECT * FROM questins";
-            Ps=connection.prepareStatement(Query);
-            Rs=Ps.executeQuery();
+            String Query="SELECT * FROM questions q, answers a Where a.id=q.id_answer";
+            ResultSet Rs = this.connection.createStatement().executeQuery(Query);
             while (Rs.next()){
-                Questins question=new Questins(Rs.getInt("id"),Rs.getString("question"),Rs.getInt("timeLimit"),Rs.getInt("id_answer"),Rs.getInt("id_category"));
+                Questins question=new Questins(
+                        Rs.getInt("id"),
+                        Rs.getString("question"),
+                        Rs.getInt("time_limit"),
+                        Rs.getInt("id_answer"),
+                        Rs.getInt("id_category"));
                 questions.add(question);
             }
         }catch (SQLException e){
