@@ -48,18 +48,6 @@ public class StaffsImpl extends DAO<Staffs> {
             return staff;
 
         }
-
-            Connection connection= Config.getInstance();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            if (resultSet.next()){
-                staff.setId((int)resultSet.getLong("id"));
-                staff.setEmail(resultSet.getString("email"));
-                ((Staffs) staff).setPassword(resultSet.getString("acc_password"));
-                return staff;
-               
-            }
-
         return null;
     }
 }

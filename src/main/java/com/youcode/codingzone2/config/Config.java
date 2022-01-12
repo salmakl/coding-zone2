@@ -14,6 +14,7 @@ public class Config {
     public static Connection getInstance(){
         if(connect == null){
             try {
+
                 connect = DriverManager.getConnection(url, user, passwd);
                 System.out.println("Connected to the PostgreSQL server successfully.");
             } catch (SQLException e) {
