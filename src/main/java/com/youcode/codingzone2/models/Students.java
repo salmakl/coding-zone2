@@ -16,7 +16,7 @@ public class Students extends Users {
         this.promotion = promotion;
     }
 
-    public Long getIdStudent() {
+    public Long getIdStudent(int id_student) {
         return idStudent;
     }
 
