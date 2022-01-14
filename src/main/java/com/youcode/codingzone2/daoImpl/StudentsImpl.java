@@ -8,7 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+<<<<<<< HEAD
+import java.util.List;
+=======
 import java.util.ArrayList;
+>>>>>>> f5b82375b41fbd9c66ef90b2aca4002e21fb7c1f
 
 public class StudentsImpl extends DAO<Students> {
 
@@ -50,6 +54,19 @@ public class StudentsImpl extends DAO<Students> {
     public void delete(Students obj) {
 
     }
+<<<<<<< HEAD
+
+    @Override
+    public List<Students> getAllCategories() {
+        return null;
+    }
+
+
+
+    @Override
+    public Students createQuizz(Students obj) {
+        return null;
+=======
     public ArrayList<Students> getAll(){
         ArrayList<Students> students = new ArrayList<>();
 
@@ -104,5 +121,6 @@ public class StudentsImpl extends DAO<Students> {
             e.printStackTrace();
         }
         return students;
+>>>>>>> f5b82375b41fbd9c66ef90b2aca4002e21fb7c1f
     }
 }

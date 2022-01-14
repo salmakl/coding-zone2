@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionImpl extends DAO<Questins> {
 
@@ -50,6 +51,16 @@ public class QuestionImpl extends DAO<Questins> {
 
     }
 
+    @Override
+    public List<Questins> getAllCategories() {
+        return null;
+    }
+
+    @Override
+    public Questins createQuizz(Questins obj) {
+        return null;
+    }
+
     public ArrayList<Questins> getAll(){
         ArrayList<Questins> questions= new ArrayList<>();
 
@@ -70,6 +81,6 @@ public class QuestionImpl extends DAO<Questins> {
         }
 
 
-    return questions;
+        return questions;
     }
 }
