@@ -5,6 +5,7 @@ import com.youcode.codingzone2.models.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class StudentsImpl extends DAO<Students> {
     @Override
@@ -33,5 +34,17 @@ public class StudentsImpl extends DAO<Students> {
     @Override
     public void delete(Students obj) {
 
+    }
+
+    @Override
+    public List<Students> getAllCategories() {
+        return null;
+    }
+
+
+
+    @Override
+    public Students createQuizz(Students obj) {
+        return null;
     }
 }

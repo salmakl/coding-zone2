@@ -9,6 +9,7 @@ import java.sql.Connection;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
 
 public class StaffsImpl extends DAO<Staffs> {
 
@@ -33,6 +34,18 @@ public class StaffsImpl extends DAO<Staffs> {
 
     }
 
+    @Override
+    public List<Staffs> getAllCategories() {
+        return null;
+    }
+
+
+
+    @Override
+    public Staffs createQuizz(Staffs obj) {
+        return null;
+    }
+
     public Users login(String email, String password) throws Exception {
         Users staff = new Staffs();
 
@@ -49,16 +62,6 @@ public class StaffsImpl extends DAO<Staffs> {
 
         }
 
-            Connection connection= Config.getInstance();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            if (resultSet.next()){
-                staff.setId((int)resultSet.getLong("id"));
-                staff.setEmail(resultSet.getString("email"));
-                ((Staffs) staff).setPassword(resultSet.getString("acc_password"));
-                return staff;
-               
-            }
 
         return null;
     }
