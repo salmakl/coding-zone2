@@ -30,10 +30,8 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Users user = staffsImpl.login(username,password);
-            System.out.println(user);
-            System.out.println("Ana hna");
+
             if(user != null){
-                System.out.println("Ana hna2");
                 HttpSession session = request.getSession();
                 session.setAttribute("user",user);
                 out.println("<h1>Well Done</h1>");
