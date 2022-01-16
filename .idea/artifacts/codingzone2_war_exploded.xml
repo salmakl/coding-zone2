@@ -6,6 +6,7 @@
         <exploded>true</exploded>
         <module>codingzone2</module>
         <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
@@ -16,6 +17,9 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.24" />
           <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.5.0" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.5.0-b01" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: javax.mail:javax.mail-api:1.6.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">
