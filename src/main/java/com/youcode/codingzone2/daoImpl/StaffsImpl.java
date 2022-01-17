@@ -61,11 +61,7 @@ public class StaffsImpl extends DAO<Staffs> {
             return staff;
 
         }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> f5b82375b41fbd9c66ef90b2aca4002e21fb7c1f
         return null;
     }
 }
