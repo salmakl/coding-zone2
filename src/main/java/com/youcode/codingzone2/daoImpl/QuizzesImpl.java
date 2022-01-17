@@ -7,7 +7,9 @@ import com.youcode.codingzone2.models.Quizzes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuizzesImpl extends DAO<Quizzes> {
@@ -46,6 +48,25 @@ public class QuizzesImpl extends DAO<Quizzes> {
             quizzesStatement.setInt(4,quizzes.getId_category());
             quizzesStatement.executeUpdate();
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return quizzes;
+    }
+
+    // select all quizzes
+    public ArrayList<Quizzes> getAll(){
+        ArrayList<Quizzes> quizzes = new ArrayList<>();
+
+        try {
+            String Query="SELECT * FROM quizzes";
+            ResultSet rs = this.connect.createStatement().executeQuery(Query);
+
+            while (rs.next()){
+                Quizzes quizz = new Quizzes(rs.getInt("id"), rs.getString("quizz_name"), rs.getString("quizz_description"), rs.getInt("id_category"));
+                quizzes.add(quizz);
+            }
+
+        }catch (SQLException e){
             e.printStackTrace();
         }
         return quizzes;
