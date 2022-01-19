@@ -17,6 +17,7 @@ public class Config {
 
                 Class.forName("org.postgresql.Driver");
 
+
                 connect = DriverManager.getConnection(url, user, passwd);
                 System.out.println("Connected to the PostgreSQL server successfully.");
             } catch (SQLException | ClassNotFoundException e) {

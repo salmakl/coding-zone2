@@ -29,10 +29,10 @@
     <label>Quizz Description</label>
     <input type="text" name="quizz_description" id="quizz_description">
     <label>Categories</label>
-    <select>
+    <select name="test">
         <%
         for (Categories category : CategoryList) { %>
-    <option> <%= category.getId() %> - <%= category.getCategory() %></option>
+    <option value="<%= category.getId() %>"><%=category.getCategory()%></option>
 <% }
         %>
     </select>

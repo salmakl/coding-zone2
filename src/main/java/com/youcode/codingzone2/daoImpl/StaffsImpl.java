@@ -57,6 +57,7 @@ public class StaffsImpl extends DAO<Staffs> {
             ((Staffs) staff).setPassword(resultSet.getString("acc_password"));
             return staff;
         }
+
         return null;
     }
 }

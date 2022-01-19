@@ -1,12 +1,14 @@
 package com.youcode.codingzone2.models;
 
+import java.util.UUID;
+
 public class Quizzes {
     private int id;
     private String name;
     private String description;
     private int id_category;
 
-    public Quizzes() {
+    public Quizzes(UUID uniqueID, String quizz_name, String quizz_description, int id_category) {
     }
 
     public Quizzes(int id, String name, String description, int id_category) {
