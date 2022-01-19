@@ -56,10 +56,7 @@ public class QuestionImpl extends DAO<Questins> {
         return null;
     }
 
-    @Override
-    public Questins createQuizz(Questins obj) {
-        return null;
-    }
+
 
     public ArrayList<Questins> getAll(){
         ArrayList<Questins> questions= new ArrayList<>();

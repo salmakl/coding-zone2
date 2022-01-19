@@ -54,9 +54,6 @@ public class UsersImpl extends DAO<Users>{
         return null;
     }
 
-    @Override
-    public Users createQuizz(Users obj) {
-        return null;
-    }
+
 
 }

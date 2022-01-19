@@ -10,7 +10,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "loginServlet", value = "/login-servlet")
+@WebServlet(name = "loginServlet", value = "/login-servlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
 
@@ -33,11 +33,10 @@ public class LoginServlet extends HttpServlet {
 
             if(user != null){
                 HttpSession session = request.getSession();
-                session.setAttribute("user",user);
-                out.println("<h1>Well Done</h1>");
-     
+                session.setAttribute("user",username);
+                response.sendRedirect("dashboard");
         }else {
-                out.println("<h1>Wrong username or password</h1>");
+                response.sendRedirect("login");
             }
         } catch (Exception e){
             out.println("<h1>Error</h1>");

@@ -39,10 +39,15 @@ public class QuizzServlet extends HttpServlet {
         int randomNumber = rand.nextInt(maxNumber) + 1;
         String quizz_name = request.getParameter("quizz_name");
         String quizz_description = request.getParameter("quizz_description");
+
+        Quizzes quizze = new Quizzes(3,quizz_name,quizz_description,3);
+        cd.create(quizze);
+
         Integer idSelected = Integer.valueOf(request.getParameter("test"));
         System.out.println(idSelected);
         Quizzes quizzes = new Quizzes(randomNumber, quizz_name, quizz_description, idSelected);
-        cd.createQuizz(quizzes);
+        cd.create(quizzes);
+
         quizzes.setName(quizz_name);
         quizzes.setDescription(quizz_description);
         quizzes.setId(1);

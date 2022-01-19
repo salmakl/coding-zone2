@@ -30,21 +30,18 @@ public class StaffsImpl extends DAO<Staffs> {
     }
 
     @Override
-    public void delete(Staffs obj) {
-
-    }
+    public void delete(Staffs obj) {}
 
     @Override
     public List<Staffs> getAllCategories() {
         return null;
     }
 
-
-
     @Override
-    public Staffs createQuizz(Staffs obj) {
+    public List<Staffs> getAll() {
         return null;
     }
+
 
     public Users login(String email, String password) throws Exception {
         Users staff = new Staffs();
@@ -59,7 +56,6 @@ public class StaffsImpl extends DAO<Staffs> {
             staff.setEmail(resultSet.getString("email"));
             ((Staffs) staff).setPassword(resultSet.getString("acc_password"));
             return staff;
-
         }
 
         return null;
