@@ -46,7 +46,6 @@ CREATE TABLE questions(
   question VARCHAR(2000) NOT NULL,
   time_limit INT NOT NULL,
   id_answer INT NOT NULL,
-  opts INT [] NOT NULL,
   id_category INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (id_answer) REFERENCES answers(id),
@@ -58,6 +57,13 @@ CREATE TABLE quizz_questions(
   PRIMARY KEY (id_quizz, id_question),
   FOREIGN KEY (id_quizz) REFERENCES quizzes(id),
   FOREIGN KEY (id_question) REFERENCES questions(id)
+);
+CREATE TABLE questions_opts(
+  id_question INT NOT NULL,
+  id_opt INT NOT NULL,
+  PRIMARY KEY (id_opt, id_question),
+  FOREIGN KEY (id_question) REFERENCES questions(id),
+  FOREIGN KEY (id_opt) REFERENCES answers(id)
 );
 CREATE TABLE open_sessions(
   id VARCHAR(1000) NOT NULL,
@@ -540,300 +546,931 @@ VALUES('<input type="text" [value]="user.name" />', 2);
 INSERT INTO
   answers(answer, id_category)
 VALUES('<input type="text" [ngModel]="user.name" />', 2);
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES('Java est un langage?', 1, 3, 1) RETURNING id
   )
-VALUES('Java est un langage?', 30, 3, ARRAY [1,2,4], 1);
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Java est un langage développé par?',
-    30,
-    8,
-    ARRAY [5,6,7],
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
     1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'La liaison tardive est essentielle pour assurer?',
-    40,
-    10,
-    ARRAY [9,11,12],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Nommez le modificateur d’accès qui, lorsqu’il est utilisé avec une méthode, le rend accessible à toutes les classes du même package et à toutes les sous-classes de la classe.',
-    30,
-    14,
-    ARRAY [13,15,16],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelle est la plage de valeurs autorisée pour une variable déclarée avec le type byte?',
-    30,
-    19,
-    ARRAY [17,18,20],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'La longueur d’une variable de type double en Java est _____?',
-    40,
-    22,
-    ARRAY [21,23,24],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Si un JSP doit générer une page XML, quel attribut de la directive «page» devrait-il utiliser?',
-    30,
-    25,
-    ARRAY [26,27,28],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelles sont les méthodes de Servlet généré?',
-    30,
-    32,
-    ARRAY [29,30,31],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Lequel des énoncés suivants est vrai à propos de la balise <c: choose>?',
-    40,
-    32,
-    ARRAY [33,34,35],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Comment passer des informations d’une page JSP à une page JSP inclus?',
-    30,
-    36,
-    ARRAY [37,38,39],
-    1
-  );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelle directive est indispensable pour afficher une application Angular 2?',
-    30,
-    42,
-    ARRAY [40,41,43],
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
     2
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    4
   );
-INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Java est un langage développé par?',
+        1,
+        8,
+        1
+      ) RETURNING id
   )
-VALUES(
-    'Quelle instruction utiliser pour les directives de formulaire?',
-    30,
-    46,
-    ARRAY [44,45,43],
-    2
-  );
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelle est la librairie Javascript indispensable?',
-    50,
-    48,
-    ARRAY [47,49,50],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    5
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    6
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    7
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'La liaison tardive est essentielle pour assurer?',
+        40,
+        10,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelle configuration de composant est correcte pour charger le template en chemin relatif?',
-    40,
-    54,
-    ARRAY [51,52,53],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    9
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    11
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    12
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Nommez le modificateur d’accès qui, lorsqu’il est utilisé avec une méthode, le rend accessible à toutes les classes du même package et à toutes les sous-classes de la classe.',
+        30,
+        14,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quel est le composant indispensable pour Angular 2?',
-    50,
-    56,
-    ARRAY [55,57,58],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    13
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    15
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    16
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelle est la plage de valeurs autorisée pour une variable déclarée avec le type byte?',
+        30,
+        19,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelle Annotation n’existe pas?',
-    30,
-    61,
-    ARRAY [59,60,62],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    17
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    18
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    20
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'La longueur d’une variable de type double en Java est _____?',
+        40,
+        22,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quel est le langage préconisé pour développer en Angular 2?',
-    30,
-    64,
-    ARRAY [63,65,66],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    21
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    23
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    24
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Si un JSP doit générer une page XML, quel attribut de la directive «page» devrait-il utiliser?',
+        30,
+        25,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Comment initialiser une application Angular 2?',
-    30,
-    69,
-    ARRAY [67,68,70],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    26
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    27
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    28
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelles sont les méthodes de Servlet généré?',
+        30,
+        32,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Quelles sont les classes dites declarable au sein d’un Module Angular 2?',
-    30,
-    43,
-    ARRAY [71,72,73],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    29
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    30
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    31
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Lequel des énoncés suivants est vrai à propos de la balise <c: choose>?',
+        40,
+        32,
+        1
+      ) RETURNING id
+  )
 INSERT INTO
-  questions(
-    question,
-    time_limit,
-    id_answer,
-    opts,
-    id_category
-  )
-VALUES(
-    'Comment utiliser le data binding sur un composant de type input?',
-    30,
-    76,
-    ARRAY [74,75,77],
-    2
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    33
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    34
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    35
   );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Comment passer des informations d’une page JSP à une page JSP inclus?',
+        30,
+        36,
+        1
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    37
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    38
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    39
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelle directive est indispensable pour afficher une application Angular 2?',
+        30,
+        42,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    40
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    41
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    43
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelle instruction utiliser pour les directives de formulaire?',
+        30,
+        46,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    44
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    45
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    43
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelle est la librairie Javascript indispensable?',
+        50,
+        48,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    47
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    49
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    50
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelle configuration de composant est correcte pour charger le template en chemin relatif?',
+        40,
+        54,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    51
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    52
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    53
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quel est le composant indispensable pour Angular 2?',
+        50,
+        56,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    55
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    57
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    58
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quelle Annotation n’existe pas?',
+        30,
+        61,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    59
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    60
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    62
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Quel est le langage préconisé pour développer en Angular 2?',
+        30,
+        64,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    63
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    65
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    66
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(
+        question,
+        time_limit,
+        id_answer,
+        id_category
+      )
+    VALUES(
+        'Comment initialiser une application Angular 2?',
+        30,
+        69,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    67
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    68
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    70
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(question, time_limit, id_answer, id_category)
+    VALUES(
+        'Quelles sont les classes dites declarable au sein d’un Module Angular 2?',
+        30,
+        43,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    71
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    72
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    73
+  );
+COMMIT;
+BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      questions(question, time_limit, id_answer, id_category)
+    VALUES(
+        'Comment utiliser le data binding sur un composant de type input?',
+        30,
+        76,
+        2
+      ) RETURNING id
+  )
+INSERT INTO
+  questions_opts(id_question, id_opt)
+VALUES
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    74
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    75
+  ),
+  (
+    (
+      SELECT
+        id
+      FROM
+        last_inserted
+    ),
+    77
+  );
+COMMIT;
 BEGIN;
 INSERT INTO
   quizzes(id, quizz_name, quizz_description, id_category)
@@ -842,12 +1479,59 @@ INSERT INTO
   quizz_questions(id_quizz, id_question)
 VALUES(1001, 1),(1001, 2),(1001, 3),(1001, 4),(1001, 5),(1001, 6),(1001, 7),(1001, 8),(1001, 9),(1001, 10);
 COMMIT;
+----------------------------------------------------------------------
+  ----------------------------------------------------------------------
+  BEGIN;
+WITH last_inserted AS (
+    INSERT INTO
+      users(id, first_name, last_name, email)
+    VALUES(
+        642006,
+        'Byron',
+        'Reynolds',
+        'interdum.sed.auctor@hotmail.net'
+      ) RETURNING id
+  )
+INSERT INTO
+  stuffs(acc_password, id_user)
+VALUES(
+    'NM33IT8SV',(
+      SELECT
+        id
+      FROM
+        last_inserted
+    )
+  );
+COMMIT;
+---- Select quizz details with
 SELECT
-  question,
-  array_agg(answer) options
+  quizz_name,
+  quizz_description,
+  category
 FROM
-  questions,
-  unnest(opts) AS opt_id
-  INNER JOIN answers ON answers.id = opt_id
+  quizzes
+  JOIN categories ON quizzes.id_category = categories.id
+  AND quizzes.id = 1001;
+---- Select quizz with questions and opts
+SELECT
+  questions.question,
+  a.answer,
+  (
+    SELECT
+      ARRAY_AGG(op.answer)
+    FROM
+      answers op,
+      questions_opts
+    WHERE
+      questions_opts.id_opt = op.id
+      AND questions_opts.id_question = questions.id
+  ) AS options
+FROM
+  questions
+  JOIN answers a ON a.id = questions.id_answer
+  JOIN questions_opts ON questions_opts.id_question = questions.id
+  JOIN quizz_questions ON quizz_questions.id_question = questions.id
+  AND quizz_questions.id_quizz = 1001
 GROUP BY
-  questions.id;
+  questions.id,
+  a.id;

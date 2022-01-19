@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "QuestionServlet", value = "/QuestionServlet")
+@WebServlet(name = "QuestionServlet", value = "/QuestionServlet",urlPatterns = {"/Questions"})
 public class QuestionServlet extends HttpServlet {
 
     private QuestionImpl questionsImpl=new QuestionImpl();
@@ -19,9 +19,13 @@ public class QuestionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         QuestionsList=questionsImpl.getAll();
-        request.setAttribute("QuestionsList",QuestionsList);;
+        request.setAttribute("QuestionsList",QuestionsList);
+        if (request.getSession().getAttribute("username") != null){
         RequestDispatcher dispacher =request.getRequestDispatcher("questions.jsp");
-        dispacher.forward(request, response);
+        dispacher.forward(request, response);}
+        else {
+            response.sendRedirect("/login");
+        }
     }
 
     @Override

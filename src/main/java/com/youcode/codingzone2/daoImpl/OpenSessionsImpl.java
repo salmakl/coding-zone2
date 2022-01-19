@@ -47,7 +47,9 @@ public class OpenSessionsImpl extends DAO<OpenSession> {
     }
 
     @Override
-    public OpenSession createQuizz(OpenSession obj) {
+    public List<OpenSession> getAll() {
         return null;
     }
+
+
 }

@@ -5,27 +5,35 @@
   Time: 4:56 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
+
+    <link rel="stylesheet" href="css/login.css">
     <title>L O G I N</title>
 </head>
 <body>
-<form action="login-servlet" method="post">
-    <table>
-        <tr>
-            <td>Username:</td>
-            <td><input type="text" name="username"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password"/></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Login"/></td>
-        </tr>
-    </table>
-</form>
+
+    <div class="form">
+        <h1>Login Member</h1>
+
+        <form action="login-servlet" method="POST">
+
+            <div class="formInput">
+                <input type="text" placeholder="Email" name="username" >
+            </div>
+            <div class="formInput" >
+
+
+                <input type="password"placeholder="Password" name="password" >
+            </div>
+            <div class="formInput">
+                <input type="submit" class="btn btn-primary" value="Log In">
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
