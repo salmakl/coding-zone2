@@ -60,10 +60,7 @@ public class StudentsImpl extends DAO<Students> {
 
 
 
-    @Override
-    public Students createQuizz(Students obj) {
-        return null;
-    }
+
 
     public ArrayList<Students> getAll(){
         ArrayList<Students> students = new ArrayList<>();

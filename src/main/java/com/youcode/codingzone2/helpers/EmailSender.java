@@ -3,11 +3,13 @@ package com.youcode.codingzone2.helpers;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 import java.util.Properties;
 
 public class EmailSender {
-    public static void sendMail(String email, String accessCode, String url) throws MessagingException {
+    public static void sendMail(String email, String accessCode, String url) throws MessagingException, IOException {
         Properties props = new Properties();
+        System.out.println("Sending email to " + email);
 
         props.put("mail.smtp.ssl.trust", "*");
         props.put("mail.smtp.ssl.protocols", "TLSv1.2");
@@ -16,16 +18,21 @@ public class EmailSender {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.starttls.enable", "true");
 
-        final String myEmail = "email";
-        final String password = "password";
+        final String myEmail = "salma.kalkhi@gmail.com";
+        final String password = "tuvikkgclqxidciy";
+
+
 
         Session session = Session.getInstance(props,new Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){
                 return  new PasswordAuthentication(myEmail,password);
             }
         });
+       // session.setDebug(true);
+        System.out.println("Session created");
         Message sendMsg = prepareMessage(session, myEmail, email, accessCode, url);
         Transport.send(sendMsg);
+
         System.out.println("Message envoyé avec succes !!");
     }
 

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@WebServlet(name = "DashboardServlet", value = "/DashboardServlet")
+@WebServlet(name = "DashboardServlet", value = "/DashboardServlet",urlPatterns = {"/dashboard"})
 public class DashboardServlet extends HttpServlet {
     ArrayList<Quizzes> quizzes = new ArrayList<>();
     ArrayList<Users> students = new ArrayList<>();
@@ -61,12 +61,17 @@ public class DashboardServlet extends HttpServlet {
             // create the invitation
             OpenSession session = new OpenSession(accessCode, invitedStdId, quizzId);
             new OpenSessionsImpl().create(session);
-
+            System.out.println("hello1");
             // send email to the student
             try {
+                System.out.println("hello2");
                 EmailSender.sendMail(invitedStdEmail, accessCode, url);
+                System.out.println("hello3");
+                System.out.println("Email sent to " + invitedStdName + " at " + invitedStdEmail);
+
             } catch (MessagingException e) {
                 e.printStackTrace();
+                System.err.println("Error in sending email.");
             }
 
             System.out.println("Invited student ID is: " + invitedStdId);

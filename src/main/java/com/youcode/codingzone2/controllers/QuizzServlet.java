@@ -34,7 +34,7 @@ public class QuizzServlet extends HttpServlet {
         String quizz_name = request.getParameter("quizz_name");
         String quizz_description = request.getParameter("quizz_description");
         Quizzes quizzes = new Quizzes(3,quizz_name,quizz_description,3);
-        cd.createQuizz(quizzes);
+        cd.create(quizzes);
         quizzes.setName(quizz_name);
         quizzes.setDescription(quizz_description);
         quizzes.setId(1);

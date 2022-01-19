@@ -18,10 +18,6 @@ public class QuizzesImpl extends DAO<Quizzes> {
         return null;
     }
 
-    @Override
-    public Quizzes create(Quizzes obj) {
-        return null;
-    }
 
     @Override
     public Quizzes update(Quizzes obj) {
@@ -39,7 +35,7 @@ public class QuizzesImpl extends DAO<Quizzes> {
     }
 
     @Override
-    public Quizzes createQuizz(Quizzes quizzes) {
+    public Quizzes create(Quizzes quizzes) {
         try {
             PreparedStatement quizzesStatement = Config.getInstance().prepareStatement(CrudFunctions.insert("quizzes",4));
             quizzesStatement.setInt(1,quizzes.getId());
