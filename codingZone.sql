@@ -1479,30 +1479,6 @@ INSERT INTO
   quizz_questions(id_quizz, id_question)
 VALUES(1001, 1),(1001, 2),(1001, 3),(1001, 4),(1001, 5),(1001, 6),(1001, 7),(1001, 8),(1001, 9),(1001, 10);
 COMMIT;
-----------------------------------------------------------------------
-  ----------------------------------------------------------------------
-  BEGIN;
-WITH last_inserted AS (
-    INSERT INTO
-      users(id, first_name, last_name, email)
-    VALUES(
-        642006,
-        'Byron',
-        'Reynolds',
-        'interdum.sed.auctor@hotmail.net'
-      ) RETURNING id
-  )
-INSERT INTO
-  stuffs(acc_password, id_user)
-VALUES(
-    'NM33IT8SV',(
-      SELECT
-        id
-      FROM
-        last_inserted
-    )
-  );
-COMMIT;
 ---- Select quizz details with
 SELECT
   quizz_name,
