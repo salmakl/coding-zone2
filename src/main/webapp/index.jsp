@@ -11,6 +11,7 @@
 <a href="hello-servlet">Hello Servlet</a>
 <a href="Login.jsp">Login</a>
 <a href="QuizzServlet">Creation of the Quizz</a>
+<a href="QuizzQuestionServlet">Creation of the Quizz</a>
 <a href="StudentServlet">Hello Servlet</a>
 </body>
 </html>

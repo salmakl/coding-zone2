@@ -1,7 +1,6 @@
 package com.youcode.codingzone2.controllers;
 
 import com.youcode.codingzone2.dao.DaoFactory;
-import com.youcode.codingzone2.daoImpl.CategoryImpl;
 import com.youcode.codingzone2.daoImpl.QuizzesImpl;
 import com.youcode.codingzone2.models.Categories;
 import com.youcode.codingzone2.models.Quizzes;
@@ -10,14 +9,13 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 @WebServlet("/QuizzServlet")
 public class QuizzServlet extends HttpServlet {
-    private CategoryImpl quizzCreation = new CategoryImpl();
+    //private CategoryImpl quizzCreation = new CategoryImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,11 +41,6 @@ public class QuizzServlet extends HttpServlet {
         System.out.println(idSelected);
         Quizzes quizzes = new Quizzes(randomNumber, quizz_name, quizz_description, idSelected);
         cd.createQuizz(quizzes);
-        quizzes.setName(quizz_name);
-        quizzes.setDescription(quizz_description);
-        quizzes.setId(1);
-        quizzes.setId_category(2);
-
         request.setAttribute("message", "All done !");
         request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
