@@ -46,7 +46,6 @@
             <td> <%= quiz.getDescription() %></td>
             <td>
                 <form action="DashboardServlet" method="get">
-                    <input name="get-quiz-id" value="<%= quiz.getId() %>" hidden/>
                     <input name="get-students" value="Invite" type="submit"/>
                 </form>
             </td>

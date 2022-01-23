@@ -20,6 +20,7 @@ import java.util.UUID;
 public class DashboardServlet extends HttpServlet {
     ArrayList<Quizzes> quizzes = new ArrayList<>();
     ArrayList<Users> students = new ArrayList<>();
+    int quizId;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +34,7 @@ public class DashboardServlet extends HttpServlet {
 
         // get students
         if (request.getParameter("get-students") != null){
+            quizId = Integer.parseInt(request.getParameter("get-quiz-id"));
             students = new UsersImpl().getAll();
             request.setAttribute("stdsList", students);
             RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
@@ -49,7 +51,6 @@ public class DashboardServlet extends HttpServlet {
             int invitedStdId = Integer.parseInt(request.getParameter("invited-std-id"));
             String invitedStdName = request.getParameter("invited-std-name");
             String invitedStdEmail = request.getParameter("invited-std-email");
-            int quizzId = Integer.parseInt(request.getParameter("quizz-id"));
 
             // generate UUID
             UUID uuid = UUID.randomUUID();
@@ -59,7 +60,7 @@ public class DashboardServlet extends HttpServlet {
             String url = "https://www.google.com/";
 
             // create the invitation
-            OpenSession session = new OpenSession(accessCode, invitedStdId, quizzId);
+            OpenSession session = new OpenSession(accessCode, invitedStdId, quizId);
             new OpenSessionsImpl().create(session);
             System.out.println("hello1");
             // send email to the student
@@ -78,7 +79,7 @@ public class DashboardServlet extends HttpServlet {
             System.out.println("Invited student Name is: " + invitedStdName);
             System.out.println("Invited student email is: " + invitedStdEmail);
             System.out.println("Invited student UUID is: " + accessCode);
-            System.out.println("Quizz ID is: " + quizzId);
+            System.out.println("Quizz ID is: " + quizId);
         }
     }
 }

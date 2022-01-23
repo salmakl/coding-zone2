@@ -16,6 +16,7 @@
 
         <div>
             <form action="DashboardServlet" method="post">
+                <input name="quizz-id" value="1001" type="hidden" hidden="hidden"/>
                 <input name="invited-std-id" value="<%= student.getId() %>" type="text" hidden="hidden"/>
                 <input name="invited-std-name" value="<%= student.getFirstname() + " " + student.getLastname() %>" type="text" readonly/>
                 <input name="invited-std-email" value="<%= student.getEmail() %>" type="text" readonly/>
