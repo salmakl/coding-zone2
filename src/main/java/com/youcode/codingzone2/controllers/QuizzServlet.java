@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-@WebServlet("/QuizzServlet")
+@WebServlet(name = "/QuizzServlet", urlPatterns = {"/quizz"})
 public class QuizzServlet extends HttpServlet {
     private CategoryImpl quizzCreation = new CategoryImpl();
 

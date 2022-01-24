@@ -10,11 +10,12 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "loginServlet", value = "/login-servlet", urlPatterns = {"/login"})
+@WebServlet(name = "loginServlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
 
     public void init()  {
+
 
     }
 
@@ -34,9 +35,12 @@ public class LoginServlet extends HttpServlet {
             if(user != null){
                 HttpSession session = request.getSession();
                 session.setAttribute("user",username);
+                session.getAttribute("user");
                 response.sendRedirect("dashboard");
+                System.out.println("user is logged in");
         }else {
                 response.sendRedirect("login");
+                System.out.println("user is not logged in");
             }
         } catch (Exception e){
             out.println("<h1>Error</h1>");

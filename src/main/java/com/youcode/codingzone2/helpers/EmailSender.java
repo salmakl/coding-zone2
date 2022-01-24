@@ -28,7 +28,7 @@ public class EmailSender {
                 return  new PasswordAuthentication(myEmail,password);
             }
         });
-       // session.setDebug(true);
+        // session.setDebug(true);
         System.out.println("Session created");
         Message sendMsg = prepareMessage(session, myEmail, email, accessCode, url);
         Transport.send(sendMsg);

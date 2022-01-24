@@ -74,7 +74,7 @@ public class StudentsImpl extends DAO<Students> {
         ArrayList<Students> students = new ArrayList<>();
 
         try {
-            String Query=" SELECT * FROM users u,students  s WHERE s.id_user=u.id ";
+            String Query="SELECT * FROM users u,students  s WHERE s.id_user=u.id";
             ResultSet resultSet = this.connection.createStatement().executeQuery(Query);
             while (resultSet.next()){
                 Users student = new Students();

@@ -1,0 +1,181 @@
+:root {
+    --primary: #14279B;
+    --secondary: #3D56B2;
+    --gray:#E6E6E6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background: url("../img/background.png");
+}
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+p {
+    color: var(--gray);
+}
+.logo {
+    width: 105px;
+}
+.logo img {
+    width: 100%;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0074d9;
+    border-color: #0074d9;
+}
+.btn {
+    display: inline-block;
+    padding: 15px 22px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #0062cc;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: white;
+    border-radius: 5px;
+}
+.profil {
+    width: 40px;
+    margin: 10px;
+    background: #d1e7ff;
+    border-radius: 50%;
+    padding: 4px;
+
+}
+.profil img {
+    width: 100%;
+    border-radius: 50%;
+}
+nav div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+aside {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    position: fixed;
+    height: 100%;
+    justify-content: space-around;
+    width: 200px;
+    margin: 20px 60px;
+    border-radius: 13px;
+    box-shadow: 1px 1px 1px #E6E6E6;
+
+}
+
+.active {
+    color: #14279B;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    /*gap: 20px;
+    padding: 20px 0px;*/
+}
+.menu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 15px 15px 15px 20px;
+    transition: all 0.2s ease;
+
+}
+.menu p{
+    color:black;
+}
+nav p{
+    color: grey;
+}
+.menu:hover{
+    background:#D1E7FF;
+    color: white;
+    border-radius: 5px;
+
+}
+button{
+    background: none;
+    border: none;
+    display: flex;
+    gap: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+    color: gray;
+    font-size: 17px;
+    cursor: pointer;
+}
+.search input[type="text"] {
+    padding: 9px;
+    background: var(--gray);
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+}
+.search img {
+    position: relative;
+    top: 10px;
+    left: 250px;
+    color: gray;
+    width: 15px;
+}
+main {
+    margin-left: 20%;
+    margin-right: 100px;
+}
+.card{
+    margin: 15px 0;
+    padding: 15px;
+    background: var(--secondary);
+    text-align: center;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+.row {
+    display: flex;
+    gap: 10px;
+}
+.column {
+    flex: 1;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid var(--gray);
+    border-radius: 5px;
+}
+
+th, td {
+    padding: 20px;
+    text-align: center;
+}
+th{
+    color: var(--secondary);
+}

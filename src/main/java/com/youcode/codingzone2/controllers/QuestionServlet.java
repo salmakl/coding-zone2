@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "QuestionServlet", value = "/QuestionServlet",urlPatterns = {"/Questions"})
+@WebServlet(name = "QuestionServlet", value = "/QuestionServlet")
 public class QuestionServlet extends HttpServlet {
 
     private QuestionImpl questionsImpl=new QuestionImpl();
@@ -24,7 +24,7 @@ public class QuestionServlet extends HttpServlet {
         RequestDispatcher dispacher =request.getRequestDispatcher("questions.jsp");
         dispacher.forward(request, response);}
         else {
-            response.sendRedirect("/login");
+            response.sendRedirect("login");
         }
     }
 

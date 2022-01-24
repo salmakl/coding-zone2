@@ -1,7 +1,9 @@
 package com.youcode.codingzone2.controllers;
 
 import com.youcode.codingzone2.daoImpl.StudentsImpl;
+import com.youcode.codingzone2.daoImpl.UsersImpl;
 import com.youcode.codingzone2.models.Students;
+import com.youcode.codingzone2.models.Users;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "StudentServlet", value = "/StudentServlet")
+@WebServlet(name = "StudentServlet", urlPatterns = {"/Student"})
 public class StudentServlet extends HttpServlet {
 
 
@@ -25,14 +27,16 @@ public class StudentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("doGet");
-        StudentsList=studentsImpl.getAll();
-        System.out.println(StudentsList.get(0).getPromotion());
-        System.out.println(StudentsList.get(0).getClasse());
-        System.out.println(StudentsList.get(0).getFirstname());
-        request.setAttribute("StudentsList", StudentsList);
-        RequestDispatcher dispacher =request.getRequestDispatcher("students.jsp");
-        dispacher.forward(request, response);
+        if (request.getParameter("get-students") != null){
+            ArrayList<Students> students = new StudentsImpl().getAll();
+            for (int i=0;i<students.size();i++){
+            System.out.println(students.get(i).getFirstname());
+            }
+            request.setAttribute("stdsList", students);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
+            dispatcher.forward(request, response);
+
+        }
 
 
     }

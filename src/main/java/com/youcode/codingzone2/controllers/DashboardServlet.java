@@ -13,10 +13,11 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@WebServlet(name = "DashboardServlet", value = "/DashboardServlet",urlPatterns = {"/dashboard"})
+@WebServlet(name = "DashboardServlet", urlPatterns = {"/dashboard"})
 public class DashboardServlet extends HttpServlet {
     ArrayList<Quizzes> quizzes = new ArrayList<>();
     ArrayList<Users> students = new ArrayList<>();
@@ -24,24 +25,48 @@ public class DashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // get quizzes
-        if (request.getParameter("get-quizzes") != null){
+
+        System.out.println("hello");
+
+        quizzes = new QuizzesImpl().getAll();
+        request.setAttribute("quizzesList", quizzes);
+        RequestDispatcher dispatcher1 = request.getRequestDispatcher("dashboard.jsp");
+        dispatcher1.forward(request, response);
+
+   /*     if (request.getParameter("get-quizzes") != null){
+
+            System.out.println("hereee");
             quizzes = new QuizzesImpl().getAll();
+            System.out.println(quizzes.get(0).getId());
             request.setAttribute("quizzesList", quizzes);
             RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
             dispatcher.forward(request, response);
-        }
+        }*/
 
-        // get students
-        if (request.getParameter("get-students") != null){
+
+      if (request.getParameter("get-students") != null){
             students = new UsersImpl().getAll();
             request.setAttribute("stdsList", students);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("dashboard.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("students.jsp");
             dispatcher.forward(request, response);
+
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (request.getParameter("get-students") != null){
+            students = new UsersImpl().getAll();
+            System.out.println(students.get(0).getFirstname());
+            request.setAttribute("stdsList", students);
+            //System.out.println("wwww");
+            // response.sendRedirect("students.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("students.jsp");
+            dispatcher.forward(request, response);
+
+        }
+
         // send invite to student
         if (request.getParameter("send-invite") != null) {
 
@@ -50,6 +75,7 @@ public class DashboardServlet extends HttpServlet {
             String invitedStdName = request.getParameter("invited-std-name");
             String invitedStdEmail = request.getParameter("invited-std-email");
             int quizzId = Integer.parseInt(request.getParameter("quizz-id"));
+            System.out.println(invitedStdId + " " + invitedStdName + " " + invitedStdEmail + " " + quizzId);
 
             // generate UUID
             UUID uuid = UUID.randomUUID();
