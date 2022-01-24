@@ -15,7 +15,22 @@ import java.util.List;
 public class QuizzesImpl extends DAO<Quizzes> {
     @Override
     public Quizzes find(long id) {
-        return null;
+        Quizzes quizz = new Quizzes();
+        try {
+            String Query="SELECT * FROM quizzes WHERE id = '"+id+"'";
+            ResultSet rs = this.connect.createStatement().executeQuery(Query);
+
+            while (rs.next()){
+                quizz.setId(rs.getInt("id"));
+                quizz.setName(rs.getString("quizz_name"));
+                quizz.setDescription(rs.getString("quizz_description"));
+                quizz.setId_category(rs.getInt("id_category"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return quizz;
     }
 
 

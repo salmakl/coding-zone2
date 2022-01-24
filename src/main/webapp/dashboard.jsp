@@ -101,7 +101,12 @@
             <td> <%= quiz.getName() %></td>
             <td> <%= quiz.getDescription() %></td>
             <td>
+<<<<<<< HEAD
                 <form action="Student" method="get">
+=======
+                <form action="dashboard" method="get">
+                    <input name="get-quiz-id" value="<%= quiz.getId() %>" hidden/>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
                     <input name="get-students" value="Invite" type="submit"/>
                 </form>
             </td>

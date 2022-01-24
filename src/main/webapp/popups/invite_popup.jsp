@@ -16,8 +16,12 @@
 
         <div>
             <form action="dashboard" method="post">
+<<<<<<< HEAD
                 <input name="quizz-id" value="1001" type="hidden" hidden/>
                 <input name="invited-std-id" value="<%= student.getId() %>" type="hidden" hidden/>
+=======
+                <input name="invited-std-id" value="<%= student.getId() %>" type="text" hidden="hidden"/>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
                 <input name="invited-std-name" value="<%= student.getFirstname() + " " + student.getLastname() %>" type="text" readonly/>
                 <input name="invited-std-email" value="<%= student.getEmail() %>" type="text" readonly/>
                 <input name="send-invite" value="Invite" type="submit"/>

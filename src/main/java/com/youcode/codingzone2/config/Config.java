@@ -8,7 +8,7 @@ public class Config {
 
     private static String url = "jdbc:postgresql://localhost:5432/codingzone";
     private static String user = "postgres";
-    private static String passwd = "2420";
+    private static String passwd = "root";
     private static Connection connect;
 
     public static Connection getInstance(){

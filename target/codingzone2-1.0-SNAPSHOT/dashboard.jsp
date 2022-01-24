@@ -1,6 +1,10 @@
 <%@ page import="com.youcode.codingzone2.models.Quizzes" %>
+<<<<<<< HEAD
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.youcode.codingzone2.models.Users" %><%--
+=======
+<%@ page import="java.util.ArrayList" %><%--
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
   Created by IntelliJ IDEA.
   User: admin
   Date: 1/9/2022
@@ -11,6 +15,7 @@
 <html>
 <head>
 
+<<<<<<< HEAD
 <%--    <link rel="stylesheet" href="css/dashboard.css">--%>
     <link rel="stylesheet" href="css/main.css">
 
@@ -88,6 +93,30 @@
 
 </aside>
 <main>
+=======
+    <link rel="stylesheet" href="css/dashboard.css">
+    <title>O V E R V I E W</title>
+</head>
+<body>
+<nav class="aside">
+    <ul>
+        <li>
+            <img src="img/icons/home.png">
+            <a href="dashboard.jsp">Home</a>
+        </li>
+        <li>
+            <img src="img/icons/quizz.png">
+            <a href="quizzes.jsp">Quizzes</a>
+        </li>
+        <li>
+            <a href="about.jsp">About</a>
+        </li>
+        <li>
+            <a href="contact.jsp">Contact</a>
+        </li>
+    </ul>
+</nav>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 <div class="content">
     <form action="dashboard" method="get">
         <input name="get-quizzes" value="Quizzes" type="submit"/>
@@ -101,7 +130,12 @@
             <td> <%= quiz.getName() %></td>
             <td> <%= quiz.getDescription() %></td>
             <td>
+<<<<<<< HEAD
                 <form action="Student" method="get">
+=======
+                <form action="dashboard" method="get">
+                    <input name="get-quiz-id" value="<%= quiz.getId() %>" hidden/>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
                     <input name="get-students" value="Invite" type="submit"/>
                 </form>
             </td>
@@ -110,10 +144,16 @@
         }%>
     </table>
 </div>
+<<<<<<< HEAD
     <div>
         <jsp:include page="popups/invite_popup.jsp"/>
     </div>
 </main>
 
+=======
+<div>
+    <jsp:include page="popups/invite_popup.jsp"/>
+</div>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 </body>
 </html>

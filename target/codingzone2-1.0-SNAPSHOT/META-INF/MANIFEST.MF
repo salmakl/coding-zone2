@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
 Built-By: admin
+<<<<<<< HEAD
 Build-Jdk: Amazon Corretto version 11.0.13
+=======
+Build-Jdk: version 11.0.13
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 

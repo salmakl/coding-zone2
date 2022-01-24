@@ -37,6 +37,10 @@ li{
     justify-content: space-between;
 }
 .content{
+<<<<<<< HEAD
     margin-left: 250px;
+=======
+    margin-left: 150px;
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 
 }

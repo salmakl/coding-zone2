@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page import="com.youcode.codingzone2.models.Quizzes" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -163,6 +164,31 @@
     </section>
 
 </main>
+=======
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSP - Hello World</title>
+</head>
+<body>
+<h1><%= "Hello World!" %>
+</h1>
+<br/>
+
+
+<a href="hello-servlet">Hello Servlet</a>
+<a href="Login.jsp">Login</a>
+<a href="QuizzServlet">Creation of the Quizz</a>
+<a href="dashboard.jsp">Quizz</a>
+<a href="StudentServlet">Hello Servlet</a>
+
+<a href="hello-servlet">Hello Servlet</a>
+<a href="Login.jsp">Login</a>
+<a href="QuizzServlet">Creation of the Quizz</a>
+<a href="StudentServlet">Hello Servlet</a>
+<a href="takeQuiz.jsp">Take A Quiz</a>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 
 </body>
 </html>

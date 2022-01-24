@@ -4,6 +4,7 @@ import com.youcode.codingzone2.dao.DAO;
 import com.youcode.codingzone2.models.OpenSession;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -51,5 +52,21 @@ public class OpenSessionsImpl extends DAO<OpenSession> {
         return null;
     }
 
+    public OpenSession findById(String id){
+        OpenSession session = new OpenSession();
+        try {
+            String Query="SELECT * FROM open_sessions WHERE id = '"+ id +"'";
+            ResultSet rs = this.connect.createStatement().executeQuery(Query);
+            while (rs.next()){
+                session.setSessionId(rs.getString("id"));
+                session.setQuizId(rs.getInt("id_quizz"));
+                session.setStudentId(rs.getInt("id_student"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return session;
+    }
 
 }

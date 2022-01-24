@@ -30,6 +30,7 @@
 <a href="QuizzServlet">Creation of the Quizz</a>
 <a href="Student">Students</a>
 
+<<<<<<< HEAD
 
 <nav class='container'>
     <div class="logo">
@@ -163,6 +164,13 @@
     </section>
 
 </main>
+=======
+<a href="hello-servlet">Hello Servlet</a>
+<a href="Login.jsp">Login</a>
+<a href="QuizzServlet">Creation of the Quizz</a>
+<a href="StudentServlet">Hello Servlet</a>
+<a href="takeQuiz.jsp">Take A Quiz</a>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 
 </body>
 </html>

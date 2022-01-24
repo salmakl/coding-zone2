@@ -17,10 +17,15 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.UUID;
 
+<<<<<<< HEAD
 @WebServlet(name = "DashboardServlet", urlPatterns = {"/dashboard"})
+=======
+@WebServlet(name = "DashboardServlet",urlPatterns = {"/dashboard"})
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 public class DashboardServlet extends HttpServlet {
     ArrayList<Quizzes> quizzes = new ArrayList<>();
     ArrayList<Users> students = new ArrayList<>();
+    int quizId;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,8 +48,14 @@ public class DashboardServlet extends HttpServlet {
             dispatcher.forward(request, response);
         }*/
 
+<<<<<<< HEAD
 
       if (request.getParameter("get-students") != null){
+=======
+        // get students
+        if (request.getParameter("get-students") != null){
+            quizId = Integer.parseInt(request.getParameter("get-quiz-id"));
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
             students = new UsersImpl().getAll();
             request.setAttribute("stdsList", students);
             RequestDispatcher dispatcher = request.getRequestDispatcher("students.jsp");
@@ -74,8 +85,11 @@ public class DashboardServlet extends HttpServlet {
             int invitedStdId = Integer.parseInt(request.getParameter("invited-std-id"));
             String invitedStdName = request.getParameter("invited-std-name");
             String invitedStdEmail = request.getParameter("invited-std-email");
+<<<<<<< HEAD
             int quizzId = Integer.parseInt(request.getParameter("quizz-id"));
             System.out.println(invitedStdId + " " + invitedStdName + " " + invitedStdEmail + " " + quizzId);
+=======
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 
             // generate UUID
             UUID uuid = UUID.randomUUID();
@@ -85,7 +99,7 @@ public class DashboardServlet extends HttpServlet {
             String url = "https://www.google.com/";
 
             // create the invitation
-            OpenSession session = new OpenSession(accessCode, invitedStdId, quizzId);
+            OpenSession session = new OpenSession(accessCode, invitedStdId, quizId);
             new OpenSessionsImpl().create(session);
             System.out.println("hello1");
             // send email to the student
@@ -104,7 +118,27 @@ public class DashboardServlet extends HttpServlet {
             System.out.println("Invited student Name is: " + invitedStdName);
             System.out.println("Invited student email is: " + invitedStdEmail);
             System.out.println("Invited student UUID is: " + accessCode);
-            System.out.println("Quizz ID is: " + quizzId);
+            System.out.println("Quizz ID is: " + quizId);
+        }
+
+        // check if access code exists
+        if (request.getParameter("submit-code") != null) {
+            String accessCode = request.getParameter("access-code");
+
+            OpenSession session = new OpenSessionsImpl().findById(accessCode);
+
+            if (session.getSessionId() == null){
+                request.setAttribute("incorrectCode", "Votre code d'accès est incorrect!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("guest.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                Quizzes quizz = new QuizzesImpl().find((long) session.getQuizId());
+
+                request.setAttribute("quizName", quizz.getName());
+                request.setAttribute("quizDescription", quizz.getDescription());
+                RequestDispatcher rd = request.getRequestDispatcher("quiz.jsp");
+                rd.forward(request, response);
+            }
         }
     }
 }

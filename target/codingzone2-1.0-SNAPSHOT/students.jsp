@@ -19,7 +19,11 @@
        <input type="submit" value="Search" name="find">
    </form>
 </div>
+<<<<<<< HEAD
 <table>
+=======
+<table border="1">
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
     <tr>
         <th>ID</th>
         <th>Full Name</th>
@@ -28,7 +32,11 @@
         <th>Email</th>
         <th>Action</th>
     </tr>
+<<<<<<< HEAD
     <% ArrayList<Students> StudentsList = (ArrayList<Students>)request.getAttribute("stdsList");
+=======
+    <% ArrayList<Students> StudentsList = (ArrayList<Students>)request.getAttribute("StudentsList"); // on récupère la liste sur la session
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
     if (StudentsList!= null){
     for (Students student : StudentsList) { %>
     <tr>

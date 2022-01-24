@@ -19,7 +19,11 @@
     <div class="form">
         <h1>Login Member</h1>
 
+<<<<<<< HEAD
         <form action="login" method="POST">
+=======
+        <form action="login-servlet" method="POST">
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 
             <div class="formInput">
                 <input type="text" placeholder="Email" name="username" >

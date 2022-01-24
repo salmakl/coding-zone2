@@ -46,6 +46,7 @@
             <scope>test</scope>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mailapi</artifactId>
@@ -70,6 +71,31 @@
             <version>1.5.0</version>
         </dependency>
     </dependencies>
+=======
+    <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mailapi</artifactId>
+        <version>1.4.3</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>javax.mail-api</artifactId>
+        <version>1.5.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>mail</artifactId>
+        <version>1.5.0-b01</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.5.0</version>
+    </dependency>
+>>>>>>> 81fbbecef5293423f9ee084e297fba5ab0fb1fe9
 
     <build>
         <plugins>
