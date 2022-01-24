@@ -20,6 +20,7 @@
 <a href="Login.jsp">Login</a>
 <a href="QuizzServlet">Creation of the Quizz</a>
 <a href="StudentServlet">Hello Servlet</a>
+<a href="takeQuiz.jsp">Take A Quiz</a>
 
 </body>
 </html>

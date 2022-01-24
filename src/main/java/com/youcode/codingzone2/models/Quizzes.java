@@ -8,7 +8,7 @@ public class Quizzes {
     private String description;
     private int id_category;
 
-    public Quizzes(UUID uniqueID, String quizz_name, String quizz_description, int id_category) {
+    public Quizzes() {
     }
 
     public Quizzes(int id, String name, String description, int id_category) {

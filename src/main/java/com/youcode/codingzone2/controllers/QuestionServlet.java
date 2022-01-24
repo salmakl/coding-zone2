@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "QuestionServlet", value = "/QuestionServlet",urlPatterns = {"/Questions"})
+@WebServlet(name = "QuestionServlet",urlPatterns = {"/Questions"})
 public class QuestionServlet extends HttpServlet {
 
     private QuestionImpl questionsImpl=new QuestionImpl();

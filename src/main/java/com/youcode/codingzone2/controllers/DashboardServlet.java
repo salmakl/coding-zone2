@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-@WebServlet(name = "DashboardServlet", value = "/DashboardServlet",urlPatterns = {"/dashboard"})
+@WebServlet(name = "DashboardServlet",urlPatterns = {"/dashboard"})
 public class DashboardServlet extends HttpServlet {
     ArrayList<Quizzes> quizzes = new ArrayList<>();
     ArrayList<Users> students = new ArrayList<>();
@@ -80,6 +80,26 @@ public class DashboardServlet extends HttpServlet {
             System.out.println("Invited student email is: " + invitedStdEmail);
             System.out.println("Invited student UUID is: " + accessCode);
             System.out.println("Quizz ID is: " + quizId);
+        }
+
+        // check if access code exists
+        if (request.getParameter("submit-code") != null) {
+            String accessCode = request.getParameter("access-code");
+
+            OpenSession session = new OpenSessionsImpl().findById(accessCode);
+
+            if (session.getSessionId() == null){
+                request.setAttribute("incorrectCode", "Votre code d'accès est incorrect!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("guest.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                Quizzes quizz = new QuizzesImpl().find((long) session.getQuizId());
+
+                request.setAttribute("quizName", quizz.getName());
+                request.setAttribute("quizDescription", quizz.getDescription());
+                RequestDispatcher rd = request.getRequestDispatcher("quiz.jsp");
+                rd.forward(request, response);
+            }
         }
     }
 }

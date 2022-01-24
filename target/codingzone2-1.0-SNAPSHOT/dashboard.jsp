@@ -33,7 +33,7 @@
     </ul>
 </nav>
 <div class="content">
-    <form action="DashboardServlet" method="get">
+    <form action="dashboard" method="get">
         <input name="get-quizzes" value="Quizzes" type="submit"/>
     </form>
     <table>
@@ -45,7 +45,8 @@
             <td> <%= quiz.getName() %></td>
             <td> <%= quiz.getDescription() %></td>
             <td>
-                <form action="DashboardServlet" method="get">
+                <form action="dashboard" method="get">
+                    <input name="get-quiz-id" value="<%= quiz.getId() %>" hidden/>
                     <input name="get-students" value="Invite" type="submit"/>
                 </form>
             </td>

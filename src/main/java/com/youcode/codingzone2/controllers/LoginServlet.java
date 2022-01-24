@@ -10,7 +10,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "loginServlet", value = "/login-servlet", urlPatterns = {"/login"})
+@WebServlet(name = "loginServlet",  urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
 
 
