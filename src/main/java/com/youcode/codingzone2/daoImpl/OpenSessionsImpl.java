@@ -38,8 +38,13 @@ public class OpenSessionsImpl extends DAO<OpenSession> {
     }
 
     @Override
-    public void delete(OpenSession obj) {
-
+    public void delete(OpenSession session) {
+        try {
+            String Query="DELETE FROM open_sessions WHERE id = '"+ session.getSessionId() +"'";
+            this.connect.createStatement().executeUpdate(Query);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
