@@ -66,20 +66,22 @@ CREATE TABLE questions_opts(
   FOREIGN KEY (id_opt) REFERENCES answers(id)
 );
 CREATE TABLE open_sessions(
-  id VARCHAR(1000) NOT NULL,
-  id_quizz INT NOT NULL,
-  id_student INT NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_quizz) REFERENCES quizzes(id),
-  FOREIGN KEY (id_student) REFERENCES students(id)
+    id VARCHAR(1000) NOT NULL,
+    id_quizz INT NOT NULL,
+    id_student INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_quizz) REFERENCES quizzes(id),
+    FOREIGN KEY (id_student) REFERENCES students(id)
 );
 CREATE TABLE archives(
-  id INT NOT NULL,
-  id_quizz INT NOT NULL,
-  student VARCHAR(100),
-  score FLOAT NOT NULL,
-  submitted_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-  FOREIGN KEY (id_quizz) REFERENCES quizzes(id)
+    id SERIAL,
+    id_quizz INT NOT NULL,
+    id_student INT NOT NULL,
+    score FLOAT NOT NULL,
+    submitted_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_quizz) REFERENCES quizzes(id),
+    FOREIGN KEY (id_student) REFERENCES students(id)
 );
 INSERT INTO
   categories(category)

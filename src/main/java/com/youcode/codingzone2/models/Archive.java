@@ -5,14 +5,16 @@ import java.sql.Timestamp;
 public class Archive {
     private int id;
     private int quiz_id;
+    private int student_id;
     private float score;
     private Timestamp submitted_at;
 
     public Archive() {
     }
 
-    public Archive(int quiz_id, float score, Timestamp submitted_at) {
+    public Archive(int quiz_id, int student_id, float score, Timestamp submitted_at) {
         this.quiz_id = quiz_id;
+        this.student_id = student_id;
         this.score = score;
         this.submitted_at = submitted_at;
     }
@@ -31,6 +33,14 @@ public class Archive {
 
     public void setQuiz_id(int quiz_id) {
         this.quiz_id = quiz_id;
+    }
+
+    public int getStudentId(){
+        return student_id;
+    }
+
+    public void setStudentId(int student_id){
+        this.student_id = student_id;
     }
 
     public float getScore() {
