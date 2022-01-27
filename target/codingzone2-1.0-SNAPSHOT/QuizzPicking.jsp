@@ -1,3 +1,4 @@
+
 <%@ page import="com.youcode.codingzone2.models.Quizzes" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.youcode.codingzone2.models.Questins" %><%--
@@ -10,12 +11,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <script src="js/index.js"></script>
+    <title>Quizz Creation</title>
+
 </head>
-<body>
-<form method="post" action="QuizzPickingServlet">
+<body onload="load()">
+<form  action="QuizzPickingServlet" method="post">
     <% List<Quizzes> QuizzPicking = (List<Quizzes>)request.getAttribute("QuizzPicking"); %>
     <% if(QuizzPicking != null) {%>
+    <input type="text" name="question" id="question">
     <select id="test2" name="test2">
         <% for (Quizzes quizzes : QuizzPicking) {%>
         <option value="<%= quizzes.getId()%>"><%= quizzes.getName()%></option>

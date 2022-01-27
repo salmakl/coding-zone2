@@ -31,10 +31,9 @@ public class QuizzServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         QuizzesImpl cd = new QuizzesImpl();
-        System.out.println("am working chbghiti");
         Random rand = new Random();
         int maxNumber = 10;
-        int randomNumber = rand.nextInt(maxNumber) + 1;
+        int randomNumber = rand.nextInt(maxNumber) + 2;
         String quizz_name = request.getParameter("quizz_name");
         String quizz_description = request.getParameter("quizz_description");
         Integer idSelected = Integer.valueOf(request.getParameter("test"));

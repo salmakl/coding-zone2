@@ -17,13 +17,13 @@
 </head>
 <body>
 <form action="QuizzServlet" method="post">
-<h1>Quizz Creation</h1>
-<% List<Categories> CategoryList = (List<Categories>)request.getAttribute("CategoryList"); // on récupère la liste sur la sessio
-%>
+    <h1>Quizz Creation</h1>
+    <% List<Categories> CategoryList = (List<Categories>)request.getAttribute("CategoryList"); // on récupère la liste sur la sessio
+    %>
 
-        <%
-    if (CategoryList!=null){
-        %>
+    <%
+        if (CategoryList!=null){
+    %>
     <label>Quizz Name</label>
     <input type="text" name="quizz_name" id="quizz_name">
     <label>Quizz Description</label>
@@ -31,20 +31,20 @@
     <label>Categories</label>
     <select name="test">
         <%
-        for (Categories category : CategoryList) { %>
-    <option value="<%= category.getId() %>"><%=category.getCategory()%></option>
-<% }
+            for (Categories category : CategoryList) { %>
+        <option value="<%= category.getId() %>"><%=category.getCategory()%></option>
+        <% }
         %>
     </select>
     <br/>
     <input type="submit" id="submit"  name="submit" value="next">
     <%
-} else {
+    } else {
     %>
-   <h1>Error 404 wrong page u shoudln't be here</h1>
-<%
-    }
-%>
+    <h1>Error 404 wrong page u shoudln't be here</h1>
+    <%
+        }
+    %>
 
 </form>
 </body>

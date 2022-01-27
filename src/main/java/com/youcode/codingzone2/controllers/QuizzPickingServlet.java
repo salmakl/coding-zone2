@@ -2,7 +2,9 @@ package com.youcode.codingzone2.controllers;
 
 import com.youcode.codingzone2.dao.DaoFactory;
 import com.youcode.codingzone2.daoImpl.QuizzQuestionImpl;
+import com.youcode.codingzone2.models.Questins;
 import com.youcode.codingzone2.models.QuizzQuestions;
+import com.youcode.codingzone2.models.Quizzes;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -14,22 +16,18 @@ import java.util.List;
 public class QuizzPickingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List QuizzPicking = DaoFactory.getQuizzPickingImpl().findAll();
+        List<Quizzes>  QuizzPicking = DaoFactory.getQuizzPickingImpl().findAll();
         response.setContentType("text/html");
         request.setAttribute("QuizzPicking", QuizzPicking);
         RequestDispatcher dispacher = request.getRequestDispatcher("QuizzPicking.jsp");
         dispacher.forward(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         QuizzQuestionImpl cd = new QuizzQuestionImpl();
-        System.out.println("am working ta ana chbghiti");
-        //Integer idquestion = Integer.valueOf(request.getParameter("test1"));
-        //Integer idquizz = Integer.valueOf(request.getParameter("test2"));
-        //System.out.println(idquestion);
-        //System.out.println(idquizz);
-        QuizzQuestions quizzes = new QuizzQuestions(1001, 11);
+        Integer idquizz = Integer.valueOf(request.getParameter("test2"));
+        Integer idquestion = Integer.valueOf(request.getParameter("question"));
+        QuizzQuestions quizzes = new QuizzQuestions(idquizz, idquestion);
         cd.insertQuizzQuestion(quizzes);
         request.setAttribute("message", "All done !");
         request.getRequestDispatcher("Login.jsp").forward(request, response);

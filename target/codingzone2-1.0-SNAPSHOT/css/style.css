@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url(../background.png);
+    width: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+.div-container {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 40em;
+    height: 30em;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+
+}
+.h1-title{
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+    align-self: center;
+    justify-self: center;
+}
+.p-paragrah {
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+    align-self: flex-start;
+    justify-self: center;
+    position: relative;
+    top: -2em;
+    margin: 12px;
+}
+.select-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    bottom: 4em;
+}
+
+select {
+    /* Reset Select */
+    width: 25em;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    max-height: 13em;
+    flex: 1;
+    padding: 0 1em;
+    color: #fff;
+    font-weight: bold;
+    background-color: #14279B;
+    background-image: none;
+    cursor: pointer;
+    height: 4em;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+    display: none;
+}
+/* Custom Select wrapper */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+    justify-content: center;
+}
+/* Arrow */
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #14279B;
+    transition: .25s all ease;
+    pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+    color: #6e85d8;
+}
+.label-select{
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+    justify-self: center;
+    position: relative;
+    bottom: 2em;
+}
+.submit-button {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: #fff;
+    font-weight: bold;
+    background-color: #14279B;
+    background-image: none;
+    cursor: pointer;
+    width: 10em;
+    height: 3em;
+    border-radius: 3em;
+    justify-self: center;
+    align-self: flex-start;
+    position: relative;
+    bottom: 5em;
+}
+.back-button {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: #fff;
+    font-weight: bold;
+    background-color: red;
+    background-image: none;
+    cursor: pointer;
+    width: 10em;
+    height: 3em;
+    border-radius: 3em;
+    justify-self: center;
+    align-self: flex-start;
+    position: relative;
+    bottom: 5em;
+}
+option {
+    background: #fff;
+    color: #000;
+    height: 7em;
+    font-size: 12px;
+}
+.styling-div {
+    background:#14279B;
+    height: 4px;
+    align-self: flex-end;
+}
+.options-div{
+    max-height: 40em;
+}
