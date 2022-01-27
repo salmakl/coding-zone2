@@ -21,19 +21,46 @@
 
 </head>
 <body onload="load()">
-<form  action="QuizzPickingServlet" method="post">
-    <% List<Quizzes> QuizzPicking = (List<Quizzes>)request.getAttribute("QuizzPicking"); %>
-    <% if(QuizzPicking != null) {%>
-    <input type="text" name="question" id="question">
-    <select id="test2" name="test2">
-        <% for (Quizzes quizzes : QuizzPicking) {%>
-        <option value="<%= quizzes.getId()%>"><%= quizzes.getName()%></option>
-        <% }%>
-    </select>
-    <input type="submit" name="submit">
-    <% }else {  %>
-    <h1>weird</h1>
-    <% } %>
+
+<div class="container">
+    <div class="div-container-hidden">
+        <div class="div-container">
+            <form  action="QuizzPickingServlet" method="post">
+                <div class="select-container">
+                    <div class="select">
+                        <% List<Quizzes> QuizzPicking = (List<Quizzes>)request.getAttribute("QuizzPicking"); %>
+                        <% if(QuizzPicking != null) {%>
+                        <input type="text" name="question" hidden id="question">
+                        <select id="test2" name="test2">
+                            <% for (Quizzes quizzes : QuizzPicking) {%>
+                            <option value="<%= quizzes.getId()%>"><%= quizzes.getName()%></option>
+                            <% }%>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" name="submit" class="submit-button" value="submit">
+                    <% }else {  %>
+                <h1>weird</h1>
+                    <% } %>
+        </div>
+    </div>
+</div>
 </form>
 </body>
 </html>
+<style>
+    .select-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-end;
+        position: relative;
+        top: 11em;
+    }
+    input.submit-button {
+        position: absolute;
+        top: 58%;
+        left: 46.5%;
+    }
+
+</style>
